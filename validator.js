@@ -1,16 +1,10 @@
 #!/usr/bin/env node
 
-require('dotenv').config()
 const v = require('validator');
 const AWS = require('aws-sdk');
-AWS.config.update({
-    region: 'us-west-2',
-    'accessKeyId': process.env.AWS_CLIENT_ID,
-    'secretAccessKey': process.env.AWS_CLIENT_SECRET
-});
 
-const db = new AWS.DynamoDB.DocumentClient();
-var errors = [];
+var db = null;    //  DynamoDB document client
+var errors = [];  //  Validation errors
 
 const validator = {
     async email(key, value) {
@@ -167,6 +161,16 @@ const validator = {
         //  Validation fails
         return false;
     }
+}
+
+exports.init = (options) => {
+    AWS.config.update({
+        region: 'us-west-2',
+        'accessKeyId': options.clientID,
+        'secretAccessKey': options.clientSecret
+    });
+
+    db = new AWS.DynamoDB.DocumentClient();
 }
 
 exports.validate = async (data, rules) => {
