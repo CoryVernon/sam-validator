@@ -1,0 +1,25 @@
+{
+    "name": "sam-validator",
+    "version": "0.0.0",
+    "description": "Wrapper for validate.js",
+    "main": "validator.js",
+    "bin": "validator.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CoryVernon/sam-validator.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CoryVernon/sam-validator/issues"
+    },
+    "homepage": "https://github.com/CoryVernon/sam-validator#readme",
+    "dependencies": {
+        "aws-sdk": "^2.830.0",
+        "dotenv": "^8.2.0",
+        "validator": "^13.5.2"
+    }
+}
